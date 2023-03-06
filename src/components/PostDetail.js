@@ -18,7 +18,6 @@ function PostDetail() {
 
     try {
       const unsub = onSnapshot(doc(db, "posts", postId), (post) => {
-        console.log("Current data: ", post.data());
         setPost(post.data());
       });
     } catch (error) {

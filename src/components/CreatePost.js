@@ -1,6 +1,7 @@
 import db from '../firebase';
 import { collection, addDoc } from "firebase/firestore";
-import { useFormInput } from "../hooks"; 
+import { useFormInput } from "../hooks";
+import { Link } from 'react-router-dom';
 
 
 function CreatePost() {
@@ -12,10 +13,6 @@ function CreatePost() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log('title: ', title);
-    console.log('subTitle: ', subTitle);
-    console.log('content: ', content);
-
     try {
       const docRef = await addDoc(collection(db, "posts"), {
         title: title.value,
@@ -23,7 +20,7 @@ function CreatePost() {
         content: content.value,
         createdAt: new Date()
       });
-      console.log("Document written with ID: ", docRef.id);
+
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -35,20 +32,22 @@ function CreatePost() {
       <form onSubmit={handleSubmit}>
         <div className="form-field">
           <label>Title</label>
-          <input {...title}></input>
+          <input className='formField' {...title} required></input>
         </div>
 
         <div className="form-field">
           <label>Sub Title</label>
-          <input {...subTitle}></input>
+          <input className='formField' {...subTitle} required></input>
         </div>
 
         <div className="form-field">
           <label>Content</label>
-          <textarea {...content}></textarea>
+          <textarea className='formField' {...content} required></textarea>
         </div>
 
-        <button className="create-post-btn">Create Post</button>
+        <Link to="/">
+          <button className="create-post-btn">Create Post</button>
+        </Link>
       </form>
     </div>
   );

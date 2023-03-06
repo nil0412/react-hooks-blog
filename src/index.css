@@ -104,3 +104,6 @@ code {
   border-radius: 3px;
   cursor: pointer;
 }
+.timeStamp{
+  color: gray;
+}
