@@ -1,22 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import db from '../firebase'
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 
 function Home() {
 
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
-
-    await getDocs(collection(db, "posts"))
-      .then((querySnapshot) => {
-        const posts = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        setPosts(posts);
-        console.log(posts, posts);
-      })
-
+    const unsub = onSnapshot(collection(db, "posts"), (snapshot) => {
+      const posts = snapshot.docs
+        .map((doc) => ({ ...doc.data(), id: doc.id }));
+      setPosts(posts);
+      console.log("posts", posts);
+    });
   }
 
   useEffect(() => {

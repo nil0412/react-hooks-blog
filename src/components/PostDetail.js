@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import db from '../firebase'
-import { collection, getDocs } from "firebase/firestore";
+import db from '../firebase';
 import { useParams } from "react-router-dom";
-import { doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
+import { doc, onSnapshot } from 'firebase/firestore';
 
 
 function PostDetail() {
@@ -18,17 +17,10 @@ function PostDetail() {
     }
 
     try {
-      const docRef = doc(db, "posts", postId);
-
-      // docRef.onSnapshot((snapshot) => {
-      //   console.log("snapshot: ", snapshot.data());
-      //   setPost(snapshot.data());
-      // });
-
-      const docSnapshot = await getDoc(docRef);
-      const postData = docSnapshot.data();
-      console.log("post data: ", postData);
-      setPost(postData);
+      const unsub = onSnapshot(doc(db, "posts", postId), (post) => {
+        console.log("Current data: ", post.data());
+        setPost(post.data());
+      });
     } catch (error) {
       console.error("Error getting post document:", error);
     }
