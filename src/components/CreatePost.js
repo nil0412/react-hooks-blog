@@ -1,7 +1,7 @@
 import db from '../firebase';
 import { collection, addDoc } from "firebase/firestore";
 import { useFormInput } from "../hooks";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function CreatePost() {
@@ -9,6 +9,8 @@ function CreatePost() {
   const title = useFormInput("");
   const subTitle = useFormInput("");
   const content = useFormInput("");
+
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -20,6 +22,10 @@ function CreatePost() {
         content: content.value,
         createdAt: new Date()
       });
+
+      console.log(docRef);
+
+      navigate('/');
 
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -45,9 +51,7 @@ function CreatePost() {
           <textarea className='formField' {...content} required></textarea>
         </div>
 
-        <Link to="/">
-          <button className="create-post-btn">Create Post</button>
-        </Link>
+        <button className="create-post-btn">Create Post</button>
       </form>
     </div>
   );
