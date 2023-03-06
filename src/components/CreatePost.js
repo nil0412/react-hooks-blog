@@ -23,7 +23,7 @@ function CreatePost() {
         createdAt: new Date()
       });
 
-      console.log(docRef);
+      console.log(docRef.id);
 
       navigate('/');
 
