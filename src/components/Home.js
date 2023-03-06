@@ -9,7 +9,7 @@ function Home() {
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
-    const unsub = onSnapshot(query(collection(db, "posts"), orderBy("createdAt")), (snapshot) => {
+    const unsub = onSnapshot(query(collection(db, "posts"), orderBy("createdAt", "desc")), (snapshot) => {
       const posts = snapshot.docs
         .map((doc) => ({ ...doc.data(), id: doc.id }));
       setPosts(posts);
