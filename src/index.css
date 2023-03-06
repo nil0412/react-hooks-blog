@@ -13,9 +13,34 @@ code {
 }
 
 .container {
-  width: 800px;
+  width: 400px;
   margin: 0 auto;
 }
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+  .container {
+    width: 400px;
+  }
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+  .container {
+    width: 600px;
+  }
+ }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  .container {
+    width: 800px;
+  }
+ }
+
+/* Extra large devices (large desktops, 1200px and up) */
+/* @media (min-width: 1200px) { ... } */
+
 .home h1 {
   text-align: center;
   color: #2196f3;
