@@ -132,3 +132,22 @@ code {
 .timeStamp{
   color: gray;
 }
+.red{
+  color: red;
+}
+.green{
+  color: green;
+}
+.blue{
+  color: blue;
+}
+.homeEnd{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.homeEnd i{
+  padding: 5px;
+}

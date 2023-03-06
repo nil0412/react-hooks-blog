@@ -23,7 +23,7 @@ function Home() {
   return (
     <div className="home">
       <h1>Tech Blog</h1>
-      <div id="blog-by">Nilesh</div>
+      <div id="blog-by">Nilesh Patil</div>
 
       {posts.map((post, index) => (
         <div className="post" key={`post-${index}`}>
@@ -34,6 +34,14 @@ function Home() {
           <p className="timeStamp">{moment(post.createdAt.toDate()).format('MMMM Do YYYY, h:mm:ss a')}</p>
         </div>
       ))}
+
+      <div className="homeEnd">
+        <i class="fa-solid fa-circle green"></i>
+        <i class="fa-solid fa-circle red  "></i>
+        <i class="fa-solid fa-circle blue"></i>
+      </div>
+
+      
     </div>
   );
 }
