@@ -134,7 +134,7 @@ code {
   padding-top: 5px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .create-post .form-field textarea {
     height: 250px;
   }
