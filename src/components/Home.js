@@ -3,6 +3,60 @@ import { Link } from "react-router-dom";
 import db from '../firebase'
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import moment from 'moment';
+import styled from "styled-components";
+
+const HomeContainer = styled.div`
+  h1{
+    text-align: center;
+    color: #2196f3;
+    margin-bottom: 2px;
+  }
+
+  .post{
+    border: 1px solid #e1e1e1;
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .post a {
+    text-decoration: none;
+  }
+
+  .post h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .post h3:hover {
+    color: #2196f3;
+  }
+
+  .post p {
+    font-size: 13px;
+  }
+
+  #blog-by {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  .homeEnd {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .homeEnd i {
+    padding: 5px;
+  }
+`;
 
 function Home() {
 
@@ -21,8 +75,8 @@ function Home() {
   }, []);
 
   return (
-    <div className="home">
-      <h1>Tech Blog</h1>
+    <HomeContainer>
+      <h1>Tech Blog</h1 >
       <div id="blog-by">Nilesh Patil</div>
 
       {posts.map((post, index) => (
@@ -41,8 +95,8 @@ function Home() {
         <i class="fa-solid fa-circle blue"></i>
       </div>
 
-      
-    </div>
+
+    </HomeContainer>
   );
 }
 
